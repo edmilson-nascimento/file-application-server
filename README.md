@@ -19,37 +19,60 @@ Para melhor organizar o codigo, será criada apenas uma classe e nem os métodos
 ## Renomear arquivo ##
 A utilização que vou aplicar foi feita para a atender uma necessidade especifica. Existe um serviço que busca os arquivos com extensão `*.txt` e faz o processamento com as informações. Para evitar que esse serviço acesso o arquivo quando ele ainda esta sendo editado, o arquivo então é criado com extensão `*.tmp` e renomeado ao final do processo garantido que o serviço tenha acesso apenas quando ele tiver todas as informações necessárias.
 ```abap
-method rename .
+  method rename .
 
-  data:
-    posicao   type i,
-    nome_novo type char128,
-    comando   type char300 .
+    data:
+      posicao   type i,
+      nome_novo type char128,
+      comando   type char300 .
 
-  find first occurrence of '.tmp' in file match offset posicao .
+    find first occurrence of '.tmp' in file match offset posicao .
 
-  if sy-subrc eq 0 .
+    if sy-subrc eq 0 .
 
-    concatenate file(posicao) '.txt'
-           into nome_novo .
+      concatenate file(posicao) '.txt'
+             into nome_novo .
 
-  else .
+    else .
 
-    find first occurrence of '.TMP' in file match offset posicao .
+      find first occurrence of '.TMP' in file match offset posicao .
 
-    if sy-subrc eq 0.
+      if sy-subrc eq 0.
 
-    concatenate file(posicao) '.TXT'
-           into nome_novo .
+      concatenate file(posicao) '.TXT'
+             into nome_novo .
 
-    endif.
+      endif.
 
-  endif .
+    endif .
 
-endmethod .
+*   "mv" + "Nome Antigo" + "Nome Novo" + "&& chmod 777" + "Nome Novo"
+    if nome_novo is not initial .
+
+      concatenate 'mv' file nome_novo
+      '&& chmod 777' nome_novo
+      into comando
+      separated by space.
+
+      call 'SYSTEM' id 'COMMAND' field comando.
+      format reset.
+
+    endif .
+
+  endmethod .
+
+  method delete .
+
+    if file is not initial .
+
+      delete dataset file .
+
+    endif .
+
+  endmethod .
 ```
 ## Deletar arquivo ##
-É uma funcionalidade mais _simples_, porem bem util. Muitas das vezes eu tentei usar os comandos do Sistema Operacional mas achei essa menira mais facil.
+É uma funcionalidade mais _simples_, porem bem util. Muitas das vezes eu tentei usar os comandos do Sistema Operacional mas achei essa menira mais fácil.
 ```abap
   method delete .
 
