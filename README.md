@@ -12,8 +12,8 @@ Serão criados exemplos basicos de como trabar com arquivo no servidor de aplica
 
 
 Para melhor organizar o codigo, será criada apenas uma classe e nem os métodos que fazem as ações.
-* [deletar aquivo](#)
 * [renomear aquivo](#renomear-arquivo)
+* [deletar aquivo](#deletar-aquivo)
 
 
 ## Renomear arquivo ##
@@ -47,4 +47,17 @@ method rename .
   endif .
 
 endmethod .
+```
+## Deletar arquivo ##
+É uma funcionalidade mais _simples_, porem bem util. Muitas das vezes eu tentei usar os comandos do Sistema Operacional mas achei essa menira mais facil.
+```abap
+  method delete .
+
+    if file is not initial .
+
+      delete dataset file .
+
+    endif .
+
+  endmethod .
 ```
