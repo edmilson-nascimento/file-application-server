@@ -12,8 +12,8 @@ Serão criados exemplos basicos de como trabar com arquivo no servidor de aplica
 
 
 Para melhor organizar o codigo, será criada apenas uma classe e nem os métodos que fazem as ações.
-* [renomear aquivo](#renomear-arquivo)
-* [deletar aquivo](#deletar-aquivo)
+* [renomear arquivo](#renomear-arquivo)
+* [deletar arquivo](#deletar-arquivo)
 
 
 ## Renomear arquivo ##
