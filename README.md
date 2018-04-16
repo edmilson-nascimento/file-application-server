@@ -12,9 +12,64 @@ Serão criados exemplos basicos de como trabar com arquivo no servidor de aplica
 
 
 Para melhor organizar o codigo, será criada apenas uma classe e nem os métodos que fazem as ações.
+* [criar arquivo](#criar-arquivo)
+* [ler arquivo](#ler-arquivo)
 * [renomear arquivo](#renomear-arquivo)
 * [deletar arquivo](#deletar-arquivo)
 
+## Criar arquivo ##
+Existem algumas variações de como informar, mas, vou usar apenas a ultima ~~porque eu to com preguiça de ficar exemplificando tudo.~~ As variações de utilizações ficam a critério de cada caso, mas para esse, será criado um arquivo de acordo com o parâmetro de entrada e dentro dele ficará uma _unica linha_ de informação.
+```abap
+method create .
+
+
+  if file is not initial .
+
+    open dataset file for output in text mode encoding default .
+
+    if sy-subrc eq 0 .
+
+      transfer 'unica linha' to file .
+      close dataset file .
+
+    endif .
+
+  endif .
+
+
+endmethod .
+```
+
+## Ler arquivo ##
+Essa parte, se diferencia principalmente na parte de criação por causa do `output in text` do `open dataset`, que para o modo de leitura vai ser alterado para `input in text`.
+```abap
+method read .
+
+  data:
+    line type string .
+
+  if file is not initial .
+
+    open dataset file for input in text mode encoding default .
+
+    do.
+
+      read dataset file into line .
+
+      if sy-subrc eq 0 .
+        write / line .
+      else.
+        exit.
+      endif.
+
+    enddo.
+
+    close dataset file .
+
+  endif .
+
+endmethod .
+```
 
 ## Renomear arquivo ##
 A utilização que vou aplicar foi feita para a atender uma necessidade especifica. Existe um serviço que busca os arquivos com extensão `*.txt` e faz o processamento com as informações. Para evitar que esse serviço acesso o arquivo quando ele ainda esta sendo editado, o arquivo então é criado com extensão `*.tmp` e renomeado ao final do processo garantido que o serviço tenha acesso apenas quando ele tiver todas as informações necessárias.
