@@ -8,6 +8,10 @@ class file_server definition .
       importing
         !file type string .
 
+    methods delete
+      importing
+        !file type string .
+
   protected section .
 
   private section .
@@ -41,6 +45,16 @@ class file_server implementation .
              into nome_novo .
 
       endif.
+
+    endif .
+
+  endmethod .
+
+  method delete .
+
+    if file is not initial .
+
+      delete dataset file .
 
     endif .
 
