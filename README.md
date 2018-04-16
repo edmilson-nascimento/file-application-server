@@ -13,6 +13,7 @@ Serão criados exemplos basicos de como trabar com arquivo no servidor de aplica
 
 Para melhor organizar o codigo, será criada apenas uma classe e nem os métodos que fazem as ações.
 * [deletar aquivo](#)
+* [renomear aquivo](#renomear-arquivo)
 
 
 ## Renomear arquivo ##
