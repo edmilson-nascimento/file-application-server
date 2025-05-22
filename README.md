@@ -2,26 +2,30 @@
 
 [![N|Solid](https://wiki.scn.sap.com/wiki/download/attachments/1710/ABAP%20Development.png?version=1&modificationDate=1446673897000&api=v2)](https://www.sap.com/brazil/developer.html)
 
-Serão criados exemplos basicos de como trabar com arquivo no servidor de aplicação. Tratando ações como criação de arquivo, deleção, renomear (linux). Antes de exemplificar, vou deixar inforamdo 3 transações que podem ajudar muito ao trabalhar com arquivos em servidor: 
+[![ABAP OO](https://img.shields.io/badge/ABAP-OO-green?style=flat)](https://www.sap.com/index.html)
+[![SAP](https://img.shields.io/badge/SAP-green?style=flat)](https://www.sap.com/index.html)
+[![Development ABAP](https://img.shields.io/badge/Development-ABAP%20(com%20log%20SAP)-blue?style=flat)](https://www.sap.com/index.html)
+[![SAP on-premise](https://img.shields.io/badge/SAP-on--premise-blue?style=flat)](https://www.sap.com/index.html)
+[![Commits](https://img.shields.io/github/commit-activity/t/edmilson-nascimento/file-application-server?style=flat)](https://github.com/edmilson-nascimento/file-application-server)
+
+Serão criados exemplos básicos de como trabalhar com arquivos no servidor de aplicação. Tratando ações como criação de arquivo, deleção, renomear (linux). Antes de exemplificar, vou deixar informando 3 transações que podem ajudar muito ao trabalhar com arquivos em servidor:
 
 | Transação | Descrição |
 | ------ | ------ |
-| AL11 Display SAP Directories| Essa transação proporciona uma visão dos arquivos e os diretorios no servidor |
+| AL11 Display SAP Directories| Essa transação proporciona uma visão dos arquivos e os diretórios no servidor |
 | CG3Y Efetuar download file | Útil para salvar no seu computador arquivos que foram gerados no servidor |
-| CG3Z Efetuar upload file | Necessária para enviar de forma direta aquivos para o servidor |
+| CG3Z Efetuar upload file | Necessária para enviar de forma direta arquivos para o servidor |
 
-
-Para melhor organizar o codigo, será criada apenas uma classe e nem os métodos que fazem as ações.
+Para melhor organizar o código, será criada apenas uma classe e nela os métodos que fazem as ações.
 * [criar arquivo](#criar-arquivo)
 * [ler arquivo](#ler-arquivo)
 * [renomear arquivo](#renomear-arquivo)
 * [deletar arquivo](#deletar-arquivo)
 
 ## Criar arquivo ##
-Existem algumas variações de como informar, mas, vou usar apenas a ultima ~~porque eu to com preguiça de ficar exemplificando tudo.~~ As variações de utilizações ficam a critério de cada caso, mas para esse, será criado um arquivo de acordo com o parâmetro de entrada e dentro dele ficará uma _unica linha_ de informação.
+Existem algumas variações de como informar, mas, vou usar apenas a última. ~~porque eu to com preguiça de ficar exemplificando tudo.~~ As variações de utilizações ficam a critério de cada caso, mas para esse, será criado um arquivo de acordo com o parâmetro de entrada e dentro dele ficará uma _única linha_ de informação.
 ```abap
 method create .
-
 
   if file is not initial .
 
@@ -35,7 +39,6 @@ method create .
     endif .
 
   endif .
-
 
 endmethod .
 ```
