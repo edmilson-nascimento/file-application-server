@@ -1,7 +1,5 @@
 # Trabalhando com arquivos no Servidor de Aplicação #
 
-[![N|Solid](https://wiki.scn.sap.com/wiki/download/attachments/1710/ABAP%20Development.png?version=1&modificationDate=1446673897000&api=v2)](https://www.sap.com/brazil/developer.html)
-
 [![ABAP OO](https://img.shields.io/badge/ABAP-OO-green?style=flat)](https://www.sap.com/index.html)
 [![SAP](https://img.shields.io/badge/SAP-green?style=flat)](https://www.sap.com/index.html)
 [![Development ABAP](https://img.shields.io/badge/Development-ABAP%20(com%20log%20SAP)-blue?style=flat)](https://www.sap.com/index.html)
